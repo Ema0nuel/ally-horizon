@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 const rawUrl = process.env.NEXT_PUBLIC_SITE_URL?.trim().replace(/\/+$/, "");
 
-export const siteUrl = rawUrl || "https://allybanks.cc";
+export const siteUrl = rawUrl || "https://allyhorizon.cc";
 
 export const siteConfig = {
   name: "Ally",
@@ -10,7 +10,7 @@ export const siteConfig = {
   tagline: "Premium Banking Reimagined",
   description:
     "Experience modern banking with Ally. Secure, fast, and beautifully designed for the way you live.",
-  contactEmail: process.env.CONTACT_EMAIL || "support@allybanks.cc",
+  contactEmail: process.env.CONTACT_EMAIL || "support@allyhorizon.cc",
   phone: "+1 (210) 279-5532",
   phoneHref: "+12102795532",
 } as const;

@@ -94,7 +94,7 @@ export default function RootLayout({
         />
         <script
           id="zsiqscript"
-          src="https://salesiq.zohopublic.com/widget?wc=siq3fe391e9c0887c94e2b76f581c4388c1a798c3bf2879214ea8784e2b726c3d93"
+          src="https://salesiq.zohopublic.com/widget?wc=siq7900815fd1342bc6cf5ae6e5dcbbf362f7cffabe55e9cf96afbdd8729673fc89"
           defer
         />
       </head>

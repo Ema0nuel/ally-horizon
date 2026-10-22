@@ -27,7 +27,7 @@ export async function POST(req: Request) {
 
   try {
     const result = await resend.emails.send({
-      from: process.env.RESEND_FROM_EMAIL || "Ally <noreply@allybanks.cc>",
+      from: process.env.RESEND_FROM_EMAIL || "Ally <noreply@allyhorizon.cc>",
       to,
       subject,
       html,

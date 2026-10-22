@@ -15,7 +15,7 @@ const branches = [
   {
     name: "Ally",
     address: "36 Main Street, Box Hill VIC 3128",
-    email: "support@allybanks.cc",
+    email: "support@allyhorizon.cc",
   },
   {
     name: "ATM iStandard GroupMarketplace",

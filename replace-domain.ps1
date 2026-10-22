@@ -36,8 +36,7 @@ $replacementCount = 0
 Get-ChildItem -LiteralPath $rootPath -Recurse -File -Force | ForEach-Object {
     $file = $_
     $relativePath = $file.FullName.Substring($rootPath.Length)
-        .TrimStart([char[]]@("\", "/"))
-        .Replace("\", "/")
+    $relativePath = $relativePath.TrimStart([char[]]@("\", "/")).Replace("\", "/")
 
     if ($relativePath -match $excludedDirectories) {
         return

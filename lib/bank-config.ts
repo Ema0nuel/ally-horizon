@@ -55,7 +55,7 @@ export type CryptoAsset = {
 export const bankConfig = {
   /** Support / admin contact email (client-accessible). */
   adminEmail:
-    process.env.NEXT_PUBLIC_CONTACT_EMAIL || "support@allybanks.cc",
+    process.env.NEXT_PUBLIC_CONTACT_EMAIL || "support@allyhorizon.cc",
 
   /** Optional external payment link for deposit requests (may be empty). */
   paymentLink: process.env.NEXT_PUBLIC_PAYMENT_LINK || "",

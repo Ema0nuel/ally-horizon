@@ -303,7 +303,7 @@ export async function forgotPassword(email: string, captchaToken: string | null)
 
   const supabase = getBrowserClient();
   const redirectUrl =
-    (typeof window !== "undefined" ? window.location.origin : "https://allybanks.cc") +
+    (typeof window !== "undefined" ? window.location.origin : "https://allyhorizon.cc") +
     "/reset-password";
 
   const { error } = await supabase.auth.resetPasswordForEmail(email, {

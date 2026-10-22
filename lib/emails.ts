@@ -47,7 +47,7 @@ export async function sendWelcomeEmail({
             <li><strong>Registered IP:</strong> ${ip}</li>
             <li><strong>Region:</strong> ${[geo.city, geo.region, geo.country].filter(Boolean).join(", ")}</li>
           </ul>
-          <p style="margin-top: 24px;">You can access your dashboard anytime at allybanks.cc</p>
+          <p style="margin-top: 24px;">You can access your dashboard anytime at allyhorizon.cc</p>
           <p style="font-size: 0.9rem; color: #777; margin-top: 32px;">
             If this wasn't you, please contact our support immediately.<br/>
             Ally, proudly serving you with security and trust.

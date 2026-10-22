@@ -61,7 +61,7 @@ export default function AdminLoginPage() {
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder="support@allybanks.cc"
+            placeholder="support@allyhorizon.cc"
             autoComplete="email"
             required
           />

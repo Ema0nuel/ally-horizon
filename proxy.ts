@@ -7,7 +7,7 @@ import {
 import { rateLimit } from "@/lib/rate-limit";
 import { updateSession } from "@/lib/supabase/middleware";
 
-const ADMIN_HOSTS = new Set(["admin.allybanks.cc"]);
+const ADMIN_HOSTS = new Set(["admin.allyhorizon.cc"]);
 
 // Search engines may see the home page and nothing else. Every other crawler,
 // scraper, and script tool gets a 404 across the whole site.
