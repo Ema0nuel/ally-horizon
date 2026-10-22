@@ -1,0 +1,560 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  /* ── Core semantic colors (Deep Vault) ── */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-deep: var(--primary-deep);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-muted: var(--primary-muted);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-surface: var(--surface);
+  --color-surface-elevated: var(--surface-elevated);
+  --color-danger: var(--danger);
+  --color-success: var(--success);
+  --color-ring: var(--ring);
+  --color-lilac: var(--lilac);
+  --color-radius: var(--radius);
+
+  /* ── shadcn semantic tokens ── */
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent-hover: var(--accent-hover);
+  --color-destructive: var(--destructive);
+  --color-input: var(--input);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  /* ── Zinc neutrals (utility, tinted toward cool) ── */
+  --color-zinc-50: #fafafa;
+  --color-zinc-100: #f4f4f5;
+  --color-zinc-200: #e4e4e7;
+  --color-zinc-300: #d4d4d8;
+  --color-zinc-400: #a1a1aa;
+  --color-zinc-500: #71717a;
+  --color-zinc-600: #52525b;
+  --color-zinc-700: #3f3f46;
+  --color-zinc-800: #27272a;
+  --color-zinc-900: #18181b;
+  --color-zinc-950: #131010;
+
+  /* ── Fonts: "TruthSans" (Ally's brand family, expected on user devices) first,
+        Figtree (bundled via next/font) as the loaded fallback, then system fonts ── */
+  --font-sans: "TruthSans", var(--font-sans-loaded), ui-sans-serif, system-ui, sans-serif;
+  --font-heading: "TruthSans", var(--font-sans-loaded), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "TruthSans", var(--font-sans-loaded), ui-sans-serif, system-ui, sans-serif;
+
+  /* ── Radius scale (multiplicative) ── */
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+/* ─── Light Theme (Ally Banks warm surface, the default) ─── */
+:root {
+  --background: #efedec;
+  --foreground: #2a2a2a;
+  --primary: #852ef2;
+  --primary-deep: #4a1a79;
+  --primary-hover: #6e22ce;
+  --primary-muted: rgba(133, 46, 242, 0.08);
+  --primary-foreground: #ffffff;
+  --accent: #b6ff00;
+  --accent-foreground: #2a2a2a;
+  --accent-hover: #a3e600;
+  --lilac: #c5aefe;
+  --muted: #f6f6f6;
+  --muted-foreground: #6b6b6b;
+  --border: #d4d4d4;
+  --ring: #852ef2;
+  --radius: 1rem;
+
+  --surface: #f6f6f6;
+  --surface-elevated: #ffffff;
+  --danger: #dc2626;
+  --success: #16a34a;
+
+  --card: #ffffff;
+  --card-foreground: #2a2a2a;
+  --popover: #ffffff;
+  --popover-foreground: #2a2a2a;
+  --secondary: #f6f6f6;
+  --secondary-foreground: #2a2a2a;
+  --destructive: #dc2626;
+  --input: #d4d4d4;
+  --chart-1: #852ef2;
+  --chart-2: #4a1a79;
+  --chart-3: #c5aefe;
+  --chart-4: #b6ff00;
+  --chart-5: #d4d4d4;
+  --sidebar: #f6f6f6;
+  --sidebar-foreground: #2a2a2a;
+  --sidebar-primary: #852ef2;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #e4d9fe;
+  --sidebar-accent-foreground: #2a2a2a;
+  --sidebar-border: #d4d4d4;
+  --sidebar-ring: #852ef2;
+}
+
+/* ─── Dark Theme (deep purple lounge) ─── */
+.dark {
+  --background: #16052b;
+  --foreground: #efedec;
+  --primary: #852ef2;
+  --primary-deep: #4a1a79;
+  --primary-hover: #9b5cf7;
+  --primary-muted: rgba(133, 46, 242, 0.18);
+  --primary-foreground: #ffffff;
+  --accent: #b6ff00;
+  --accent-foreground: #2a2a2a;
+  --accent-hover: #a3e600;
+  --lilac: #c5aefe;
+  --muted: #1f0b3a;
+  --muted-foreground: #b7a6d9;
+  --border: #4a1a79;
+  --ring: #852ef2;
+  --radius: 1rem;
+
+  --surface: #1f0b3a;
+  --surface-elevated: #2b114b;
+  --danger: #ef4444;
+  --success: #22c55e;
+
+  --card: #2b114b;
+  --card-foreground: #f6f6f6;
+  --popover: #2b114b;
+  --popover-foreground: #f6f6f6;
+  --secondary: #1f0b3a;
+  --secondary-foreground: #efedec;
+  --destructive: #ef4444;
+  --input: #4a1a79;
+  --chart-1: #852ef2;
+  --chart-2: #c5aefe;
+  --chart-3: #b6ff00;
+  --chart-4: #efedec;
+  --chart-5: #4a1a79;
+  --sidebar: #1f0b3a;
+  --sidebar-foreground: #efedec;
+  --sidebar-primary: #852ef2;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #2b114b;
+  --sidebar-accent-foreground: #efedec;
+  --sidebar-border: #4a1a79;
+  --sidebar-ring: #852ef2;
+}
+
+/* ─── Base Styles ─── */
+@layer base {
+  html {
+    font-family: "TruthSans", var(--font-sans-loaded), ui-sans-serif, system-ui, -apple-system,
+      "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-weight: 400;
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  /* One family for everything (Ally uses a single family); headings slightly bolder */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "TruthSans", var(--font-sans-loaded), ui-sans-serif, system-ui, -apple-system,
+      "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-weight: 600;
+  }
+
+  /* Interactive elements: snappy 180ms ease */
+  a, button, input, select, textarea, summary, [role="button"] {
+    transition: color 180ms ease, background-color 180ms ease, border-color 180ms ease,
+      box-shadow 180ms ease, opacity 180ms ease, transform 180ms ease;
+  }
+
+  /* Selection */
+  ::selection {
+    background-color: var(--primary-muted);
+    color: var(--primary);
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 100px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--muted-foreground);
+  }
+
+  * {
+    @apply border-border outline-ring/50;
+  }
+}
+
+/* ─── Easing Curves ─── */
+@layer base {
+  :root {
+    --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+    --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+    --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+}
+
+/* ─── Utilities ─── */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Animation delays for stagger */
+  .animation-delay-100 {
+    animation-delay: 100ms;
+  }
+  .animation-delay-200 {
+    animation-delay: 200ms;
+  }
+  .animation-delay-300 {
+    animation-delay: 300ms;
+  }
+  .animation-delay-400 {
+    animation-delay: 400ms;
+  }
+  .animation-delay-500 {
+    animation-delay: 500ms;
+  }
+  .animation-delay-600 {
+    animation-delay: 600ms;
+  }
+
+  /* Gradient text (subtle, used sparingly) */
+  .gradient-text {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-hover) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Card hover lift */
+  .card-hover {
+    transition: transform 200ms var(--ease-out),
+      box-shadow 200ms var(--ease-out);
+  }
+
+  .card-hover:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 20px 40px -12px rgba(19, 16, 16, 0.1);
+  }
+
+  .dark .card-hover:hover {
+    box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.5);
+  }
+
+  /* Spring transition for playful interactions */
+  .spring-transition {
+    transition: all 400ms var(--ease-spring);
+  }
+
+  /* Smooth ease-out transition */
+  .ease-smooth {
+    transition-timing-function: var(--ease-out);
+  }
+
+  /* Fade-in-up keyframe for scroll reveals */
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in-up {
+    animation: fade-in-up 400ms var(--ease-out) both;
+  }
+
+  /* Subtle pulse for live indicators */
+  @keyframes pulse-soft {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.6;
+    }
+  }
+
+  .animate-pulse-soft {
+    animation: pulse-soft 2s ease-in-out infinite;
+  }
+
+  /* Shimmer for skeletons */
+  @keyframes shimmer {
+    0% {
+      background-position: -200% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
+  }
+
+  .skeleton {
+    background: linear-gradient(
+      90deg,
+      var(--muted) 25%,
+      var(--surface-elevated) 50%,
+      var(--muted) 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+  }
+
+  /* Image reveal clip-path */
+  @keyframes reveal-up {
+    from {
+      clip-path: inset(100% 0 0 0);
+    }
+    to {
+      clip-path: inset(0 0 0 0);
+    }
+  }
+
+  .animate-reveal-up {
+    animation: reveal-up 800ms var(--ease-out) forwards;
+  }
+}
+
+/* ─── Button Classes (Ally CTA family) ─── */
+@layer components {
+  /* Shared pill CTA shape */
+  .btn,
+  .btn-primary,
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border: 1px solid transparent;
+    border-radius: 9999px;
+    padding: 0.875rem 1.75rem;
+    font-weight: 600;
+    line-height: 1;
+    white-space: nowrap;
+    cursor: pointer;
+    outline: none;
+    transition: background-color 180ms ease, color 180ms ease, border-color 180ms ease,
+      box-shadow 180ms ease, transform 180ms ease;
+  }
+
+  .btn:focus-visible,
+  .btn-primary:focus-visible,
+  .btn-secondary:focus-visible {
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--ring) 50%, transparent);
+  }
+
+  /* Primary CTA: lime pill, ink text */
+  .btn-primary {
+    background-color: var(--accent);
+    color: var(--accent-foreground);
+  }
+
+  .btn-primary:hover:not(:disabled) {
+    background-color: var(--accent-hover);
+  }
+
+  /* Secondary: deep brand purple, white text */
+  .btn-secondary {
+    background-color: var(--primary);
+    color: var(--primary-foreground);
+  }
+
+  .btn-secondary:hover:not(:disabled) {
+    background-color: var(--primary-hover);
+  }
+
+  /* Tertiary text link: brand color, underline on hover */
+  .btn-link {
+    padding: 0;
+    border: none;
+    background: none;
+    color: var(--primary);
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .btn-link:hover {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+}
+
+/* ─── Reduced Motion ─── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ─── Touch Device Hover Guard ─── */
+@media (hover: none) and (pointer: coarse) {
+  .card-hover:hover {
+    transform: none;
+    box-shadow: none;
+  }
+}
+
+/* ─── Google Translate (watermark stripped) ─── */
+/* The widget is mounted into a hidden node and driven programmatically, so we
+   hide all Google branding: the injected banner frame, the widget iframe
+   (VIpgJd-*), and the "Powered by Google Translate" logo. `body { top: 0 }`
+   undoes the offset the banner applies to the page. */
+#google_translate_element,
+.VIpgJd-ZVi9od-ORHb-OEVmcd,
+.goog-te-banner-frame,
+.skiptranslate {
+  display: none !important;
+}
+
+body {
+  top: 0 !important;
+}
+
+.goog-logo-link {
+  display: none !important;
+}
+
+.goog-te-gadget {
+  color: transparent !important;
+}
+
+.goog-te-gadget .goog-te-gadget-simple {
+  border: none !important;
+  background: transparent !important;
+}
+
+.goog-te-gadget .goog-te-gadget-simple .goog-te-menu-value span {
+  color: transparent !important;
+}
+
+/* ─── Ally CTA wiring (unlayered on purpose: wins over utility colors/radius) ─── */
+/* Button-family elements (Button component + buttonVariants on links):
+   default variant -> lime primary CTA, secondary/padded-outline -> purple pill. */
+
+.group\/button,
+[data-slot="button"] {
+  border-radius: 9999px;
+  transition: background-color 180ms ease, color 180ms ease, border-color 180ms ease,
+    box-shadow 180ms ease, opacity 180ms ease, transform 180ms ease;
+}
+
+/* Primary CTA (default variant carries bg-primary) */
+.group\/button.bg-primary,
+[data-slot="button"].bg-primary {
+  background-color: var(--accent);
+  color: var(--accent-foreground);
+  border-color: transparent;
+  font-weight: 600;
+}
+
+.group\/button.bg-primary:hover:not(:disabled),
+[data-slot="button"].bg-primary:hover:not(:disabled) {
+  background-color: var(--accent-hover);
+  color: var(--accent-foreground);
+}
+
+/* Secondary button (secondary variant, and outline CTAs sized with generous px) */
+.group\/button.bg-secondary,
+[data-slot="button"].bg-secondary,
+.group\/button.bg-background.px-6,
+.group\/button.bg-background.px-7,
+.group\/button.bg-background.px-8 {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  border-color: transparent;
+  font-weight: 600;
+}
+
+.group\/button.bg-secondary:hover:not(:disabled),
+[data-slot="button"].bg-secondary:hover:not(:disabled),
+.group\/button.bg-background.px-6:hover:not(:disabled),
+.group\/button.bg-background.px-7:hover:not(:disabled),
+.group\/button.bg-background.px-8:hover:not(:disabled) {
+  background-color: var(--primary-hover);
+  color: var(--primary-foreground);
+}
+
+/* Tertiary text link (link variant) */
+.group\/button.underline-offset-4 {
+  color: var(--primary);
+}
+
+.group\/button.underline-offset-4:hover:not(:disabled) {
+  color: var(--primary);
+  text-decoration: underline;
+}
+
+/* Inputs: friendly 0.75rem radius, border/ring follow --border / --primary tokens */
+input[data-slot="input"],
+[data-slot="input"],
+[data-slot="select-trigger"],
+select,
+textarea {
+  border-radius: 0.75rem;
+}
+
+/* iOS Safari auto-zooms a focused field whose font-size is below 16px.
+   Hold form text at 16px on touch-sized viewports so focus never zooms the page. */
+@media (max-width: 1024px) {
+  input,
+  select,
+  textarea {
+    font-size: 16px;
+  }
+}
