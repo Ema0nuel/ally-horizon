@@ -63,6 +63,7 @@ export default function RegisterPage() {
     data.title = title;
     data.selectcountry = countryCode;
     data.country = country;
+    data.password = password;
 
     const required = [
       "title",
