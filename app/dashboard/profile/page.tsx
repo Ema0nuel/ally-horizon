@@ -3,7 +3,7 @@
 import type * as React from "react";
 import { useRef, useState } from "react";
 import Link from "next/link";
-import { Camera, Loader2, ShieldCheck } from "lucide-react";
+import { Camera, Loader2, LogOut, ShieldCheck } from "lucide-react";
 
 import { bankConfig, type Option } from "@/lib/bank-config";
 import { COUNTRIES } from "@/lib/countries";
@@ -50,6 +50,7 @@ export default function ProfilePage() {
   const profile = useAuthStore((s) => s.profile) as Profile | null;
   const account = useAuthStore((s) => s.account) as Account | null;
   const setProfile = useAuthStore((s) => s.setProfile);
+  const signOut = useAuthStore((s) => s.signOut);
   const { amount } = useMoney();
 
   const [form, setForm] = useState<Editable>(() => ({
@@ -345,6 +346,18 @@ export default function ProfilePage() {
             </Button>
           </div>
         </form>
+      </div>
+
+      <div className="lg:hidden">
+        <Button
+          type="button"
+          variant="ghost"
+          onClick={signOut}
+          className="w-full justify-center gap-2 rounded-2xl border border-border text-primary-deep hover:text-primary-deep"
+        >
+          <LogOut className="size-5" />
+          <span>Sign out</span>
+        </Button>
       </div>
     </div>
   );
