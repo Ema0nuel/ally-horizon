@@ -93,6 +93,8 @@ export default function RegisterPage() {
       }
     }
 
+    data.email = data.email.trim().toLowerCase();
+
     if (!/^[\w-.]+@([\w-]+\.)+[\w-]{2,}$/.test(data.email)) {
       setError("Please enter a valid email address.");
       return;
@@ -244,7 +246,16 @@ export default function RegisterPage() {
             <label htmlFor="email" className={labelClass}>
               Email address
             </label>
-            <input id="email" name="email" type="email" className={inputClass} required />
+            <input
+              id="email"
+              name="email"
+              type="email"
+              className={inputClass}
+              required
+              onChange={(e) => {
+                e.target.value = e.target.value.toLowerCase();
+              }}
+            />
           </div>
 
           <div>

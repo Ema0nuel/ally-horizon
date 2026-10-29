@@ -31,10 +31,12 @@ async function findUserByAccessId(
 ): Promise<{ id: string; email: string; full_name: string | null } | null> {
   const supabase = getBrowserClient();
 
+  // Match emails case-insensitively. Backslashes keep ilike wildcards literal.
+  const pattern = accessID.trim().toLowerCase().replace(/[\\%_]/g, "\\$&");
   const { data: profile } = await supabase
     .from("profiles")
     .select("id, email, full_name")
-    .or(`email.eq.${accessID},username.eq.${accessID}`)
+    .or(`email.ilike.${pattern},username.eq.${accessID}`)
     .maybeSingle();
 
   if (profile) return profile;
@@ -210,7 +212,7 @@ export async function signupUser(
 
   const supabase = getBrowserClient();
   const {
-    email,
+    email: rawEmail,
     password,
     firstname,
     lastname,
@@ -229,6 +231,9 @@ export async function signupUser(
     gender,
     acctype,
   } = formData;
+
+  // Store emails lowercase so later logins match no matter how they were typed.
+  const email = rawEmail.trim().toLowerCase();
 
   const { data, error } = await supabase.auth.signUp({ email, password });
   if (error) throw new Error(error.message);

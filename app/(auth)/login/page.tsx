@@ -177,7 +177,10 @@ export default function LoginPage() {
                 className={inputClass}
                 type="text"
                 value={accessID}
-                onChange={(e) => setAccessID(e.target.value)}
+                onChange={(e) => {
+                  const value = e.target.value;
+                  setAccessID(value.includes("@") ? value.toLowerCase() : value);
+                }}
                 placeholder="Email, username, or account number"
                 autoComplete="username"
               />
